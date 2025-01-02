@@ -9,8 +9,11 @@ body  {
 	text-color: black;
 	width: 100%;
 	height: 100%;
-	-webkit-user-select: none; /* Safari */
-	-ms-user-select: none; /* IE 10 and IE 11 */
-	user-select: none; /* Standard syntax */
+	font-family: TB-SloppyHandwriting
+}
+
+input, button {
+	font-size: x-large;
+	text-align: center;
 	font-family: TB-SloppyHandwriting
 }

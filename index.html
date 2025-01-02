@@ -7,9 +7,65 @@
 		<link rel='stylesheet' href='stylesheet.css' type='text/css'>
 	</head>
 	<body>
-		<h1>Test</h1>
+		
+		<div id='code_div'>
+			<p>Enter Coupon Code Below:</p>
+			<p><input></input></p>
+			<p><button onclick='submit()'>Submit</button></p>
+			<p id="invalid_code"></p>
+		</div>
+
+		<div id='coupon_div' style='display:none; border: 2px black dashed; margin: 5%; padding: 3px;'>
+			<h1 id="coupon_title">Coupon Title</h1>
+			<p id="coupon_details">Reward details go here</p>
+			<p>Limit 1 per customer. Expires 1/1/2026. Void where prohibited.</p>
+		</div>
+		
 		<script src='jquery.min.js'></script>
+		
 		<script>
+			function submit()
+			{
+				var code = $('input').val().toUpperCase();
+				var valid = false;
+				
+				switch(code)
+				{
+					case "FUCK":
+						$('#coupon_title').text("NO WAY, JOSE!");
+						$('#coupon_details').text("This coupon entitles the bearer to: JACK SHIT!");
+						valid = true;
+						break;
+					case "FIVE":
+						$('#coupon_title').text("Bonus Points!");
+						$('#coupon_details').text("If the Shiester Burger has beaten you in a game by 5 points or fewer, present this coupon to immediately subtract 5 points from his score.");
+						valid = true;
+						break;
+					case "CARD":
+						$('#coupon_title').text("Trade Cards!");
+						$('#coupon_details').text("Present this coupon to immediately trade any card in your possession for any card currently held by the Shiester Burger. This may apply to other game pieces if this current game does not use cards.");
+						valid = true;
+						break;
+					case "NOPE":
+						$('#coupon_title').text("Leave Me Alone!");
+						$('#coupon_details').text("Present this coupon when you are targetted by a card or ability used by the Shiester Burger. Declare \"Leave Me Alone\", and force the Shiester Burger to choose a new target.");
+						valid = true;
+						break;
+					default:
+						break;
+				}
+				
+				if (valid)
+				{
+					$('#code_div').css('display', 'none');
+					$('#coupon_div').css('display', 'block');
+				}
+				else
+				{
+					$('#invalid_code').text("Please enter a valid coupon code!");
+					$('input').val("");
+				}
+			}
 		</script>
 	</body>
 </html>
